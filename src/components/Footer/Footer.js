@@ -5,6 +5,9 @@ const MainContainer = styled.div`
   width: 100%;
   height: 4rem;
 
+  margin-top: auto;
+  bottom: 0;
+
   background: green;
 `;
 
