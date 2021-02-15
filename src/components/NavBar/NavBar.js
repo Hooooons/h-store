@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
 import styled from "styled-components";
-import MainPage from "../MainPage/MainPage";
+// import MainPage from "../MainPage/MainPage";
 
 const MainContainer = styled.div`
   /* 임시 */
@@ -42,7 +42,7 @@ function NavBar() {
           <Link to="/signup">회원가입/</Link>
         </li>
         <li>
-          <Link to="/signin">로그인 or 로그아웃</Link>
+          <Link to="/login">로그인 or 로그아웃</Link>
         </li>
       </ul>
     </MainContainer>

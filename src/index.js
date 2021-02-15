@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "antd/dist/antd.css";
 import "./index.css";
+
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
@@ -10,18 +12,24 @@ import { Provider } from "react-redux";
 
 import promiseMiddleware from "redux-promise";
 import ReduxThunk from "redux-thunk";
-import Reducer from "./redux";
+
+// import Reducer from "./redux";
+// 직관적이지 않아 rootReducer로 import이름변경
+import rootReducer from "./redux";
 
 const createStoreWithMiddleware = applyMiddleware(
   promiseMiddleware,
   ReduxThunk
 )(createStore);
 
+// const store = createStore(rootReducer);
+// console.log(store.getState());
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider
       store={createStoreWithMiddleware(
-        Reducer,
+        rootReducer,
         window.__REDUX_DEVTOOLS_EXTENSION__ &&
           window.__REDUX_DEVTOOLS_EXTENSION__()
       )}
