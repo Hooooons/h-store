@@ -2,10 +2,6 @@ import React, { useEffect } from "react";
 import { Route, useHistory } from "react-router-dom";
 import firebase from "./firebase";
 
-//리덕스
-import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "./redux/user_redux";
-
 //라우트
 import Footer from "./components/Footer/Footer";
 import MainPage from "./components/MainPage/MainPage";
@@ -17,7 +13,12 @@ import Upload from "./components/Upload/Upload";
 import Wishlist from "./components/Wishlist/Wishlist";
 import MyPage from "./components/MyPage/MyPage";
 
+//리덕스
+import { useDispatch, useSelector } from "react-redux";
+import { clearUser, setUser } from "./redux/user_redux";
+
 //antd
+import "antd/dist/antd.css";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 
@@ -28,17 +29,17 @@ function App() {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      // console.log('user', user)
+      // console.log("user", user);
 
       // 로그인이 된 상태
       if (user) {
         history.push("/");
         dispatch(setUser(user));
+      } else {
+        // 로그인이 되지 않은 상태
+        history.push("/");
+        dispatch(clearUser());
       }
-      // else {
-      //   // 로그인이 되지 않은 상태
-      //   history.push("/");
-      // }
     });
   }, [history, dispatch]);
 
@@ -64,7 +65,7 @@ function App() {
     );
   } else {
     return (
-      <div className="App">
+      <div style={{ minWidth: "60rem" }}>
         <NavBar />
 
         <Route path="/" component={MainPage} exact />

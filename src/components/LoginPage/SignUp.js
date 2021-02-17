@@ -120,6 +120,7 @@ function SignUp() {
               required: true,
               message: "이름을 입력해주세요",
             },
+            { max: 25, message: "25자 이하의 이름만 가능합니다" },
           ]}
         >
           <Input placeholder="Name" />
