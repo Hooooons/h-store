@@ -36,7 +36,7 @@ function App() {
         history.push("/");
         dispatch(setUser(user));
       } else {
-        // 로그인이 되지 않은 상태
+        // 로그인이 되지 않은 상태.
         history.push("/");
         dispatch(clearUser());
       }
